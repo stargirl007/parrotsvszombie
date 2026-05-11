@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Parrot vs Zombie</title>
+    <link rel="stylesheet" href="styles.css?v=20260511-message-readable2" />
+  </head>
+  <body>
+    <div class="game-viewport">
+      <main class="game-shell">
+        <section class="topbar" aria-label="Game status">
+          <div>
+            <p class="eyebrow">Forest defense prototype</p>
+            <h1>Parrot vs Zombie</h1>
+          </div>
+          <div class="stats">
+            <div class="stat">
+              <span>Tokens</span>
+              <strong id="energy">100</strong>
+            </div>
+            <div class="stat">
+              <span>Wave</span>
+              <strong id="wave">1</strong>
+            </div>
+            <div class="stat">
+              <span>Score</span>
+              <strong id="score">0</strong>
+            </div>
+            <div class="stat">
+              <span>Lives</span>
+              <strong id="lives">5</strong>
+            </div>
+          </div>
+          <button id="startBtn" class="primary-btn" type="button">Start</button>
+        </section>
+
+        <section class="play-area">
+          <div class="board-wrap">
+          <div class="bg-layer bg-evening" aria-hidden="true"></div>
+          <div class="bg-layer bg-night" aria-hidden="true"></div>
+          <aside class="deck" aria-label="Unit cards">
+            <button class="card selected" type="button" data-type="sunflower">
+              <span class="mini-unit"><img src="assets/opt/sunflower-degen.png" alt="" /></span>
+              <span>
+                <strong>Sunflower</strong>
+                <small>Grow tokens - 50</small>
+              </span>
+            </button>
+            <button class="card" type="button" data-type="pizza">
+              <span class="mini-unit"><img src="assets/opt/parrots/pizza.png" alt="" /></span>
+              <span>
+                <strong>Pizza</strong>
+                <small>Pizza shot - 50</small>
+              </span>
+            </button>
+            <button class="card" type="button" data-type="baseball">
+              <span class="mini-unit"><img src="assets/opt/parrots/baseball.png" alt="" /></span>
+              <span>
+                <strong>Baseball</strong>
+                <small>Knockback - 125</small>
+              </span>
+            </button>
+            <button class="card" type="button" data-type="ninja">
+              <span class="mini-unit"><img src="assets/opt/parrots/ninja.png" alt="" /></span>
+              <span>
+                <strong>Ninja</strong>
+                <small>Shuriken crit - 175</small>
+              </span>
+            </button>
+            <button class="card" type="button" data-type="vr">
+              <span class="mini-unit"><img src="assets/opt/parrots/vr.png" alt="" /></span>
+              <span>
+                <strong>VR</strong>
+                <small>Pierce laser - 200</small>
+              </span>
+            </button>
+            <button class="card" type="button" data-type="royal">
+              <span class="mini-unit"><img src="assets/opt/parrots/royal.png" alt="" /></span>
+              <span>
+                <strong>Royal</strong>
+                <small>Slow crown - 275</small>
+              </span>
+            </button>
+            <button class="card" type="button" data-type="flower">
+              <span class="mini-unit"><img src="assets/opt/parrots/flower.png" alt="" /></span>
+              <span>
+                <strong>Flower</strong>
+                <small>Bloom stun - 175</small>
+              </span>
+            </button>
+            <button class="card" type="button" data-type="grim">
+              <span class="mini-unit"><img src="assets/opt/parrots/grim.png" alt="" /></span>
+              <span>
+                <strong>Grim</strong>
+                <small>3x3 bomb - 350</small>
+              </span>
+            </button>
+            <button id="shovelBtn" class="card tool-card" type="button" data-tool="shovel">
+              <span class="mini-unit shovel-icon"><img src="assets/opt/shovel.png" alt="" /></span>
+              <span>
+                <strong>Shovel</strong>
+                <small id="shovelStatus">Remove unit - ready</small>
+              </span>
+            </button>
+          </aside>
+          <div id="porch" class="porch" aria-hidden="true"></div>
+          <div id="board" class="board" aria-label="Parrot vs Zombie board"></div>
+          <div class="entry-yard" aria-hidden="true"></div>
+          <div id="message" class="message">Plant sunflower, collect sun, then place parrots to defend the forest.</div>
+          <div id="phaseToast" class="phase-toast" aria-hidden="true">
+            <strong>Phase Shift</strong>
+            <span>Rules changed.</span>
+          </div>
+          <div id="pauseModal" class="pause-modal" aria-hidden="true">
+            <strong>PAUSED</strong>
+            <span>Press Resume to continue.</span>
+          </div>
+          <div id="unlockModal" class="unlock-modal" aria-hidden="true">
+            <span id="unlockKicker" class="unlock-kicker">New Trait Unlocked</span>
+            <img id="unlockImage" src="assets/opt/parrots/flower.png" alt="" />
+            <strong id="unlockTitle">Flower Parrot</strong>
+            <p id="unlockDescription">Bloom Stun slows zombie movement across the next 5 grass tiles in front, giving VR and Royal more time to shred the lane.</p>
+            <button id="unlockContinueBtn" type="button">Continue</button>
+          </div>
+          <div id="gameOverModal" class="game-over-modal" aria-hidden="true">
+            <strong>GAME OVER</strong>
+            <span>Press Restart to try again.</span>
+          </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="game.js?v=20260511-message-readable2"></script>
+  </body>
+</html>

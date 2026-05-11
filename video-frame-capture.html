@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Video Frame Capture</title>
+    <style>
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        background: #8f8f8f;
+      }
+
+      video {
+        position: fixed;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        object-fit: contain;
+        background: #8f8f8f;
+      }
+    </style>
+  </head>
+  <body>
+    <video id="video" muted playsinline preload="auto"></video>
+    <script>
+      const params = new URLSearchParams(location.search);
+      const video = document.querySelector("#video");
+      video.src = "file:///C:/Users/admin/Desktop/Video%20Project%204.mp4";
+      window.captureReady = false;
+      video.addEventListener("loadedmetadata", () => {
+        const t = Number(params.get("t") || 0);
+        video.currentTime = Math.min(Math.max(0, t), Math.max(0, video.duration - 0.05));
+      });
+      video.addEventListener("seeked", () => {
+        window.captureReady = true;
+      });
+    </script>
+  </body>
+</html>
